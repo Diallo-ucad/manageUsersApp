@@ -42,7 +42,7 @@ public class User {
     public int getId() {
         return id;
     }
-    
+
     /**
      *
      * @return name
@@ -123,5 +123,15 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", birthdate=" + birthdate +
+                ", country='" + country + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", gender='" + gender + '\'' +
+                '}';
+    }
 }
