@@ -1,9 +1,8 @@
-package com.atos.manageUserApp.entity;
+package com.technicaltest.manageusersacountapp.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -13,20 +12,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @Column(name = "name")
     private String name;
+    @Column(name = "birthdate")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date birthdate;
+    @Column(name = "country")
     private String country;
+    @Column(name = "phoneNumber", nullable = true, unique = true)
     private String phoneNumber;
+    @Column(name = "gender", nullable = true)
     private String gender;
-
-    /*
-    private enum gender{
-        Male,
-        Female,
-        Other
-    }
-    */
-
     /**
      *
      * @param id

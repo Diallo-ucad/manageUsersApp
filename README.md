@@ -1,2 +1,0 @@
-# manageUsersApp
-Atos technical test
