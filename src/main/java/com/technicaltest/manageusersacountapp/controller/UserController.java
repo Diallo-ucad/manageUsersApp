@@ -31,7 +31,7 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<User> createUser(@RequestBody User user){
+    public ResponseEntity createUser(@RequestBody User user){
 
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(user.getBirthdate());
@@ -44,7 +44,9 @@ public class UserController {
         String country = user.getCountry();
 
         if(age<18 || !country.equalsIgnoreCase("France") ){
-            return new ResponseEntity(HttpStatus.FORBIDDEN);
+            return ResponseEntity
+                    .status(HttpStatus.FORBIDDEN)
+                    .body("Sorry, only adult french resident are allowed to create an account!");
         }
         return ResponseEntity.ok().body(this.userService.createUser(user));
     }
