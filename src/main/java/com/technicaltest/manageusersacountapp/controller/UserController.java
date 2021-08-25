@@ -26,9 +26,18 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<User> getAllUserById(@PathVariable int id){
+    public ResponseEntity getAllUserById(@PathVariable int id){
+
+        User user = userService.getUserById(id);
+        if(user == null){
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body("Invalid user id"+id);
+
+        }
         return ResponseEntity.ok().body(userService.getUserById(id));
     }
+
 
     @PostMapping("/users")
     public ResponseEntity createUser(@RequestBody User user){
@@ -42,7 +51,6 @@ public class UserController {
         LocalDate now = LocalDate.now();
         long age = ChronoUnit.YEARS.between(birthdate, now);
         String country = user.getCountry();
-
         if(age<18 || !country.equalsIgnoreCase("France") ){
             return ResponseEntity
                     .status(HttpStatus.FORBIDDEN)
@@ -50,4 +58,5 @@ public class UserController {
         }
         return ResponseEntity.ok().body(this.userService.createUser(user));
     }
+
 }
