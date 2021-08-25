@@ -15,7 +15,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"DIALLO ELHADJ\",\r\n    \"birthdate\":\"1993-11-22\",\r\n    \"country\":\"France\",\r\n    \"phoneNumber\":\"0751996503\",\r\n    \"gender\": \"Male\"\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
