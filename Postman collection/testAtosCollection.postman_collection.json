@@ -1,0 +1,156 @@
+{
+	"info": {
+		"_postman_id": "379de976-005a-4245-bf16-0c6707de0703",
+		"name": "testAtosCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"DIALLO ELHADJ\",\r\n    \"birthdate\":\"1993-11-22\",\r\n    \"country\":\"France\",\r\n    \"phoneNumber\":\"0751996503\",\r\n    \"gender\": \"Male\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				},
+				"description": "Get all users "
+			},
+			"response": []
+		},
+		{
+			"name": "Create major and french user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"DIALLO ELHADJ\",\r\n    \"birthdate\":\"1993-11-22\",\r\n    \"country\":\"France\",\r\n    \"phoneNumber\":\"0751996505\",\r\n    \"gender\": \"Male\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				},
+				"description": "create user"
+			},
+			"response": []
+		},
+		{
+			"name": "Get user by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"DIALLO ELHADJ FOULA\",\r\n    \"birthdate\":\"1993-11-22\",\r\n    \"country\":\"France\",\r\n    \"phoneNumber\":\"0751996513\",\r\n    \"gender\": \"Male\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/users/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"1"
+					]
+				},
+				"description": "Get user using his id "
+			},
+			"response": []
+		},
+		{
+			"name": "Try to create minor user (It's not allowed)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"DIALLO ELHADJ\",\r\n    \"birthdate\":\"2018-11-22\",\r\n    \"country\":\"France\",\r\n    \"phoneNumber\":\"0751996508\",\r\n    \"gender\": \"Male\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				},
+				"description": "This query return error message because user is not major and french resident"
+			},
+			"response": []
+		},
+		{
+			"name": "Create major and french user without phono number and gender (it's not requiered)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"DIALLO FOULA\",\r\n    \"birthdate\":\"1993-11-22\",\r\n    \"country\":\"France\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				},
+				"description": "We can create user without phone number and gender because it's not allowed, their values will be null"
+			},
+			"response": []
+		}
+	]
+}
